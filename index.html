@@ -2,98 +2,11 @@
 <html>
   <head>
     <title>Picsum Gallery</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      
-      h1 {
-        text-align: center;
-        margin-top: 20px;
-      }
-      
-      #gallery {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        margin-top: 20px;
-      }
-      
-      .image {
-        margin: 10px;
-        width: 300px;
-        height: 300px;
-        object-fit: cover;
-      }
-      
-      .liked {
-        border: 2px solid green;
-      }
-      
-      .liked button {
-        background-color: green;
-        color: white;
-      }
-    </style>
+    <link rel="stylesheet" href="./css/generate.css">
   </head>
   <body>
     <h1>Picsum Gallery</h1>
     <div id="gallery"></div>
-    <script>
-      function getImages(callback) {
-        var request = new XMLHttpRequest();
-        request.open('GET', 'https://picsum.photos/v2/list', true);
-        request.onload = function() {
-          if (request.status >= 200 && request.status < 400) {
-            var data = JSON.parse(request.responseText);
-            var randomData = [];
-            for (var i = 0; i < 30; i++) {
-              var index = Math.floor(Math.random() * data.length);
-              randomData.push(data[index]);
-            }
-            callback(randomData);
-          } else {
-            console.error('Error fetching images from API');
-          }
-        };
-        request.onerror = function() {
-          console.error('Error fetching images from API');
-        };
-        request.send();
-      }
-      
-      function displayImages(data) {
-        var gallery = document.getElementById('gallery');
-        data.forEach(function(image) {
-          var img = document.createElement('img');
-          img.src = image.download_url;
-          img.alt = image.author;
-          img.classList.add('image');
-          
-          var likeButton = document.createElement('button');
-          likeButton.innerText = 'Like';
-          likeButton.addEventListener('click', function() {
-            toggleLike(img);
-          });
-          
-          var imageContainer = document.createElement('div');
-          imageContainer.appendChild(img);
-          imageContainer.appendChild(likeButton);
-          gallery.appendChild(imageContainer);
-        });
-      }
-      
-      function toggleLike(img) {
-        if (img.classList.contains('liked')) {
-          img.classList.remove('liked');
-        } else {
-          img.classList.add('liked');
-        }
-      }
-      
-      getImages(displayImages);
-    </script>
+    <script src="./js/generate.js"></script>
   </body>
 </html>
