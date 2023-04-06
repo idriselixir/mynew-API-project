@@ -8,6 +8,7 @@ function getImages(callback) {
       for (var i = 0; i < 30; i++) {
         var index = Math.floor(Math.random() * data.length);
         randomData.push(data[index]);
+
         
       }
       callback(randomData);

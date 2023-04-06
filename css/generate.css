@@ -8,6 +8,7 @@
     text-align: center;
     margin-top: 20px;
   }
+
   
   #gallery {
     display: flex;
@@ -44,6 +45,7 @@
     font-size: 14px;
     font-weight: bold;
   }
+  
   
   .share-btn:hover {
     background-color: #3b5998;
